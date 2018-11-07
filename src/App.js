@@ -1,39 +1,28 @@
 import React from 'react';
 
-// //  Appはクラスコンポーネント
-// class App extends Component {
-//   render() {
-//     // const greeting = "Hi!"
-//     // const dom = <h1 className="foo">{greeting}</h1>;
-//     // return dom;
-//     // return <input type="text" onChange={()=>{console.log("I am Clicked!")}} />
-//     return (
-//       <React.Fragment>
-//         <label htmlFor="bar">bar</label>
-//         < input type = "text"
-//         onChange = {
-//           () => {
-//             console.log("I am Clicked!")
-//           }
-//         }
-//         />
-//       </React.Fragment>
-//     )  
-//   }
-// }
-
 // 関数コンポーネント、ファンクションコンポーネント
 const App = () =>{
+  const profiles = [
+    { name: "Taro", age: 10 },
+    { name: "Hanako", age: 5 },
+    { name: "NoName"}
+  ]
   return (
   <div>
-    <Cat />
-    <Cat />
+    {
+      profiles.map((profile, index)=>{
+        return <User name={profile.name} age={profile.age} key={index}/>
+      })
+    }
   </div>
   )
 }
-const Cat = () => {
+const User = (props) => {
   return (
-  <div>Meow!</div>
+  <div>Hi, I am {props.name}, and {props.age} years.old!</div>
   )
+}
+User.defaultProps={
+  age: 1
 }
 export default App;
